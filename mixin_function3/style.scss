@@ -1,0 +1,75 @@
+@use "modules.scss" as f;
+@use "sass:color";
+$base: green;
+$blue-color: blue;
+$red-color: red;
+$rem15: 15;
+$rem2: 2;
+$rem18: 18;
+$remfon: 24;
+$rem20: 20;
+
+@mixin article-card($blue-color, $border-color: $base, $font-size: 1rem){
+    border:f.rem($rem2) solid color.adjust($blue-color, $lightness: +10%);
+    color: $red-color;
+};
+
+.content-1 {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: f.rem($rem15);
+    p{
+        padding: f.rem($rem15);
+    }
+    
+    .artc-1 {
+        @include article-card($base);
+        color: $blue-color;
+        
+    }
+    .artc-2 {
+        @include article-card($base);
+     
+    }
+    .artc-3 {
+        @include article-card($base);
+        color: $blue-color;
+        
+    }
+    .artc-4 {
+        @include article-card($base);
+        
+    }
+}
+
+.content-2 {
+    @include article-card($blue-color);
+    margin: f.rem($rem15);
+    p{
+        color: $base;
+        text-align: center;
+        font-size: f.rem($remfon);
+    }
+}
+
+.main {
+    @include article-card ($red-color);
+    width: 85%;
+    margin: auto;
+    .title {
+        color: $base;
+        margin:auto;
+        margin-top: f.rem($rem20);
+        width: fit-content;
+        text-align: center;
+        text-decoration: underline $blue-color;
+    }
+    .sub_title {
+        @extend.title;
+        border: f.rem($rem2) solid $red-color;
+        padding: f.rem($rem18);
+        text-decoration: none;
+    }
+
+}
